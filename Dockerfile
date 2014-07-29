@@ -24,5 +24,3 @@ RUN DEBIAN_FRONTEND=noninteractive && \
     apt-get remove -y --purge git wget python && \
     apt-get autoremove -y && \
     apt-get clean
-
-VOLUME /opt/odoostrap
