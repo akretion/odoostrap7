@@ -9,6 +9,8 @@ RUN DEBIAN_FRONTEND=noninteractive && \
 RUN DEBIAN_FRONTEND=noninteractive && \
     mkdir -p /opt/odoostrap/parts
 
+#sha1
+#625aa7e75ddb4d943c1dac51909df31f7876ed28
 RUN cd /opt/odoostrap/parts && git clone https://github.com/odoo/odoo.git -b 8.0 --depth=10
 
 ADD buildout.cfg /opt/odoostrap/buildout.cfg
