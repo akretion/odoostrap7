@@ -10,8 +10,11 @@ RUN DEBIAN_FRONTEND=noninteractive && \
     mkdir -p /opt/odoostrap/parts
 
 #sha1
-#625aa7e75ddb4d943c1dac51909df31f7876ed28
-RUN cd /opt/odoostrap/parts && git clone https://github.com/odoo/odoo.git -b 8.0 --depth=10
+#c16884364b61cd5bf88790a0818aad52ac1715d1
+RUN cd /opt/odoostrap/parts && git clone https://github.com/odoo/odoo.git -b 7.0 --depth=10
+RUN git remote add ocb https://github.com/OCA/OCB.git
+RUN git fetch ocb 7.0:7.0-ocb --depth=10
+RUN git checkout 7.0-ocb
 
 ADD buildout.cfg /opt/odoostrap/buildout.cfg
 
