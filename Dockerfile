@@ -14,7 +14,7 @@ RUN DEBIAN_FRONTEND=noninteractive && \
 RUN cd /opt/odoostrap/parts && git clone https://github.com/odoo/odoo.git -b 7.0 --depth=10
 RUN cd /opt/odoostrap/parts/odoo && \
     git remote add ocb https://github.com/OCA/OCB.git && \
-    git fetch ocb 7.0 --depth=10 && \
+    git fetch ocb 7.0 --depth=10
 
 ADD buildout.cfg /opt/odoostrap/buildout.cfg
 
