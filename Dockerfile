@@ -10,7 +10,7 @@ RUN DEBIAN_FRONTEND=noninteractive && \
     mkdir -p /opt/odoostrap/parts
 
 #sha1
-#c16884364b61cd5bf88790a0818aad52ac1715d1
+#3632949cffb24180832e18a3f19a6d02bd8e8729
 RUN cd /opt/odoostrap/parts && git clone https://github.com/odoo/odoo.git -b 7.0 --depth=10
 RUN cd /opt/odoostrap/parts/odoo && \
     git remote add ocb https://github.com/OCA/OCB.git && \
