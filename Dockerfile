@@ -3,7 +3,7 @@ MAINTAINER rvalyi "rvalyi@akretion.com"
 
 RUN DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
-    apt-get install -y git wget python && \
+    apt-get install -y git && \
     apt-get clean
 
 RUN DEBIAN_FRONTEND=noninteractive && \
@@ -11,21 +11,14 @@ RUN DEBIAN_FRONTEND=noninteractive && \
 
 #sha1
 #3632949cffb24180832e18a3f19a6d02bd8e8729
-RUN cd /opt/odoostrap/parts && git clone https://github.com/odoo/odoo.git -b 7.0 --depth=10
+RUN cd /opt/odoostrap/parts && git clone https://github.com/odoo/odoo.git -b 7.0 --depth=50
 RUN cd /opt/odoostrap/parts/odoo && \
     git remote add ocb https://github.com/OCA/OCB.git && \
-    git fetch ocb 7.0 --depth=10
-
-ADD buildout.cfg /opt/odoostrap/buildout.cfg
-
-RUN cd /opt/odoostrap && \
-    wget https://raw.github.com/buildout/buildout/master/bootstrap/bootstrap.py && \
-    /usr/bin/python bootstrap.py && \
-    /usr/bin/python bin/buildout && \
-    rm buildout.cfg
+    git fetch ocb 7.0 --depth=50
 
 # seems this won't free any space sadly
 RUN DEBIAN_FRONTEND=noninteractive && \
-    apt-get remove -y --purge git wget python && \
+    apt-get remove -y --purge git && \
     apt-get autoremove -y && \
-    apt-get clean
+    apt-get clean && \
+    rm -rf /var/cache/apt/archives/*.deb
